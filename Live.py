@@ -11,6 +11,7 @@ def welcome(user_name):
 
 def load_game():
     want_to_play = True
+
     while want_to_play:
         game_value = select_a_game()
         difficulty_value = select_difficulty()
