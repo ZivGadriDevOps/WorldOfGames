@@ -1,5 +1,5 @@
 from random import randint
-from HelperMethods import print_with_delay, get_verified_value_from_user, \
+from Utils.HelperMethods import print_with_delay, get_verified_value_from_user, \
     turn_num_into_counter, check_if_user_ready, count_down, print_faces
 from time import sleep
 

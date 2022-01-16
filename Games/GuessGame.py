@@ -1,4 +1,4 @@
-from HelperMethods import generate_random_int_between, print_with_delay, get_verified_value_from_user
+from Utils.HelperMethods import generate_random_int_between, print_with_delay, get_verified_value_from_user
 
 
 def generate_number(difficulty):
