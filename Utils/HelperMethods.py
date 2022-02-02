@@ -19,10 +19,11 @@ difficulty_map = {
 }
 
 
-def select_a_game():
+def select_a_game(repeat_instructions):
     game_value = None
-    print_with_delay(f"Please choose a game to play by typing its number:\n", 8, 0.5)
-    print_values_map(game_map, "game", 15)
+    if repeat_instructions:
+        print_with_delay(f"Please choose a game to play by typing its number:\n", 8, 0.5)
+        print_values_map(game_map, "game", 15)
     while game_value is None:
         game_value = get_verified_value_from_user(3, "int", "\nYour game selection is: ", len(game_map))
         if game_value is not None:
@@ -31,12 +32,14 @@ def select_a_game():
     return game_value
 
 
-def select_difficulty():
+def select_difficulty(repeat_instructions):
     difficulty_value = None
-    print_with_delay(f"Please choose the difficulty level to play by typing its number:\n", 8, 0.5)
-    print_values_map(difficulty_map, "difficulty", 15)
+    if repeat_instructions:
+        print_with_delay(f"Please choose the difficulty level to play by typing its number:\n", 8, 0.5)
+        print_values_map(difficulty_map, "difficulty", 15)
     while difficulty_value is None:
-        difficulty_value = get_verified_value_from_user(3, "int", "\nYour difficulty selection is: ", len(difficulty_map))
+        difficulty_value = get_verified_value_from_user(3, "int", "\nYour difficulty selection is: ",
+                                                        len(difficulty_map))
         if difficulty_value is not None:
             print_with_delay(f"Awesome!!\nYour difficulty selection is: {difficulty_map.get(str(difficulty_value))}."
                              "\nI believe we are ready to roll!\n\n\n", 8, 3)
@@ -238,7 +241,6 @@ def get_user_score():
 
 
 def check_user_exist(user_name):
-
     try:
         with open(SCORES_FILE_NAME, 'r') as file_rw:
             data = file_rw.readlines()
@@ -252,4 +254,27 @@ def check_user_exist(user_name):
         return False
     except FileNotFoundError:
         print(FileNotFoundError.with_traceback())
+
+
+def checkToRepeatInstructions():
+    available_answers = ["yes", "y", "no", "n"]
+    num_attempts = 3
+    user_answer = ""
+    while not user_answer in available_answers and num_attempts > 0:
+        user_answer = input_with_delay("Do you need a refresh of your choices? y/n: ", 8)
+        if user_answer.lower() in ["y", "yes"]:
+            print_with_delay("Sure", 5, 1)
+            return True
+        elif user_answer.lower() in ["n", "no"]:
+            print_with_delay("Great!", 5, 8)
+            return False
+        else:
+            if num_attempts == 3:
+                print_with_delay("Please answer solly with 'yes' or 'no'.", 4, 2)
+            if num_attempts == 2:
+                print_with_delay("Come on.... Please type only 'yes' or 'no'.", 4, 2)
+            if num_attempts == 1:
+                print_with_delay("Ok. I will repeat choices and instructions.", 4, 2)
+                return True
+        num_attempts -= 1
 
