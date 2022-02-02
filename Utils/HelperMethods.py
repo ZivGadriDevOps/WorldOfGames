@@ -266,7 +266,7 @@ def checkToRepeatInstructions():
             print_with_delay("Sure", 5, 1)
             return True
         elif user_answer.lower() in ["n", "no"]:
-            print_with_delay("Great!", 5, 8)
+            print_with_delay("Perfect", 5, 1)
             return False
         else:
             if num_attempts == 3:

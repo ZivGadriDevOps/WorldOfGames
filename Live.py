@@ -11,7 +11,7 @@ from time import sleep
 def welcome():
     global user_name
     user_name = get_verified_value_from_user(3, "string", "Hi there! Please enter your name to continue:", 1)
-    if check_user_exist():
+    if check_user_exist(user_name):
         print_with_delay(f"Hi {user_name}! It's great having you back.", 8, 1)
         repeat_instructions = checkToRepeatInstructions()
     else:
