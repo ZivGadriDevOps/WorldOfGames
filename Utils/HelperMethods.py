@@ -2,6 +2,7 @@ from time import sleep
 from random import random, randint
 import sys
 
+from Utils.UtilsFile import SCORES_FILE_NAME
 
 game_map = {
     "1": "Memory Game",
@@ -114,6 +115,8 @@ def assert_for_right_value(input_value, input_type_expected, limit, last_attempt
             if not last_attempt:
                 print_with_delay(f"You must enter only numbers.", 8, 0)
             return None
+    else:
+        return input_value
 
 
 def get_verified_value_from_user(max_attempts, value_type, user_input_message, limit):
@@ -151,6 +154,7 @@ def get_verified_value_from_user(max_attempts, value_type, user_input_message, l
         print_with_delay("The game ended.", 10, 1)
         print_with_delay("ADIOS\n", 1, 2)
         print_faces("sad")
+        exit(1)
     return user_value
 
 
@@ -223,3 +227,29 @@ def print_faces(expression):
         print("  |  ")
         print(" ___ ")
         print("/   \\")
+
+
+def get_user_score():
+    with open(SCORES_FILE_NAME, 'r') as file_read:
+        user_current_points = file_read.read()
+        if user_current_points == '':
+            user_current_points = '0'
+    return user_current_points
+
+
+def check_user_exist(user_name):
+
+    try:
+        with open(SCORES_FILE_NAME, 'r') as file_rw:
+            data = file_rw.readlines()
+            count = 0
+            if len(data) > 0:
+                for data_item in data:
+                    count += 1
+                    existing_user = str(data_item.split(" : ")[0])
+                    if user_name.upper() == existing_user.upper():
+                        return True
+        return False
+    except FileNotFoundError:
+        print(FileNotFoundError.with_traceback())
+

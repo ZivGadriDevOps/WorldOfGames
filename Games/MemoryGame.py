@@ -79,6 +79,7 @@ def play(difficulty):
     print_with_delay("The list generated is...:\n", 30, 1)
     print(generated_sequence)
     sleep(wait_with_list)
+    print(chr(27) + "[2J")
     for i in range(100):
         print("NO CHEATING!!! DON'T SCROLL UP!!!")
     sleep(1)

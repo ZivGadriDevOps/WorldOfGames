@@ -1,6 +1,6 @@
 from Live import welcome, load_game
 
 
-welcome("Guy")
+welcome()
 
 load_game()
