@@ -1,4 +1,4 @@
 DANIELLE : 14
-ZIV : 25
+ZIV : 33
 RAZ : 14
 ROTEM : 42

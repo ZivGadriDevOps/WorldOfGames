@@ -1,5 +1,4 @@
-import os
-
-SCORES_FILE_NAME = "C:\\Users\\ziv\\PycharmProjects\\WorldOfGames\\Scores\\scores.txt"
-BAD_RETURN_CODE = 1
+SCORES_FILE_PATH = "C:/Users/ziv/PycharmProjects/WorldOfGames/Resources/scores.txt"
+# SCORES_FILE_PATH = "./Resources/scores.txt"
+BAD_RETURN_CODE = -1
 IS_USER_EXIST = False

@@ -2,7 +2,7 @@ from time import sleep
 from random import random, randint
 import sys
 
-from Utils.UtilsFile import SCORES_FILE_NAME
+from Utils.UtilsFile import SCORES_FILE_PATH, BAD_RETURN_CODE
 
 game_map = {
     "1": "Memory Game",
@@ -232,17 +232,9 @@ def print_faces(expression):
         print("/   \\")
 
 
-def get_user_score():
-    with open(SCORES_FILE_NAME, 'r') as file_read:
-        user_current_points = file_read.read()
-        if user_current_points == '':
-            user_current_points = '0'
-    return user_current_points
-
-
 def check_user_exist(user_name):
     try:
-        with open(SCORES_FILE_NAME, 'r') as file_rw:
+        with open(SCORES_FILE_PATH, 'r') as file_rw:
             data = file_rw.readlines()
             count = 0
             if len(data) > 0:
@@ -277,4 +269,34 @@ def checkToRepeatInstructions():
                 print_with_delay("Ok. I will repeat choices and instructions.", 4, 2)
                 return True
         num_attempts -= 1
+
+
+def get_user_score(user_name):
+    try:
+        with open(SCORES_FILE_PATH, 'r') as file_rw:
+            data = file_rw.readlines()
+            count = 0
+            if len(data) > 0:
+                for data_item in data:
+                    count += 1
+                    user_name_score = {
+                        "USER_NAME": str(data_item.split(" : ")[0]),
+                        "USER_SCORE": str(data_item.split(" : ")[1])
+                    }
+                    if user_name_score.get("USER_NAME").upper() == user_name.upper():
+                        return user_name_score.get("USER_SCORE")
+                print(f"User {user_name} is not found in 'scores.txt' file.")
+                return BAD_RETURN_CODE
+    except FileNotFoundError:
+        print(FileNotFoundError.with_traceback())
+
+
+def get_repaired_name(name):
+    name_ = ""
+    for letterNum in range(len(name)):
+        if letterNum == 0:
+            name_ += name[letterNum].upper()
+        else:
+            name_ += name[letterNum].lower()
+    return name_
 
