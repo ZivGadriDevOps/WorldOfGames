@@ -1,8 +1,9 @@
+from time import sleep
+
 from selenium import webdriver
-from selenium.common.exceptions import NoSuchElementException
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as ec
-from Utils.UtilsFile import CHROME_DRIVER_FILE_PATH
+from selenium.common.exceptions import NoSuchElementException, WebDriverException
+from Utils.UtilsFile import CHROME_DRIVER_FILE_PATH, BAD_RETURN_CODE, GOOD_RETURN_CODE
+from selenium.webdriver.common.by import By
 
 
 def init_driver():
@@ -17,11 +18,10 @@ def init_driver():
 def find_element(by, value, driver):
     element = None
     try:
-        element = WebDriverWait(driver, 5).until(
-            ec.visibility_of_element_located((by, value))
-        )
+        element = driver.find_element(by, value)
     except NoSuchElementException:
         print("Could not find element by given locator")
+        exit(-1)
     finally:
         return element
 
@@ -29,3 +29,31 @@ def find_element(by, value, driver):
 def get_element_text(by, value, driver):
     return find_element(by, value, driver).text
 
+
+def test_scores_service(url):
+    driver = init_driver()
+    try:
+        driver.get(url)
+        sleep(3)
+        score_raw = get_element_text(By.XPATH, "//div[@class='container text-center']//strong/div", driver)
+        score = score_raw.split(" ")[0]
+        driver.quit()
+        if 1 <= int(score) <= 1000:
+            print(f"Test passed! Score {score} is between 1 and 1000")
+            return True
+        else:
+            print(f"Test failed! Score {score} is not between 1 and 1000")
+            return False
+    except WebDriverException:
+        print("Could not load the page.")
+        exit(-1)
+
+
+def main_function(url):
+    try:
+        if test_scores_service(url):
+            exit(GOOD_RETURN_CODE)
+        else:
+            exit(BAD_RETURN_CODE)
+    except WebDriverException:
+        exit(-1)
