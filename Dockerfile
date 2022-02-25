@@ -3,6 +3,6 @@ WORKDIR /app
 COPY . /app
 EXPOSE 5000
 RUN pip install flask
-CMD ["python", "app/Utils/MainScores.py"]
+CMD ["python", "Utils/MainScores.py"]
 
 
