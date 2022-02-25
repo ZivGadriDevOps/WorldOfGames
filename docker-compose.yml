@@ -1,33 +1,9 @@
 version: "3.9"
-services:
- 
-  hub:
-    image: selenium/hub:3.141.59
-    container_name: hub
+services: 
+  flask:
+    image: zivgadri/flask-image:v1.0
+    container_name: flask-server
     ports:
-      - "4444:4444"
+      - "5000:5000"
  
-    environment:
-      GRID_MAX_SESSION: 16
-      GRID_BROWSER_TIMEOUT: 5000
-      GRID_TIMEOUT: 5000
- 
-  chrome1:
-    image: selenium/node-chrome:98.0
-    container_name: web-chrome1
-    depends_on:
-      - hub
-    environment:
-      HUB_PORT_4444_TCP_ADDR: hub
-      HUB_PORT_4444_TCP_PORT: 4444
-      NODE_MAX_SESSION: 1
-      NODE_MAX_INSTANCES: 1
-      SCREEN_WIDTH: 1920
-      SCREEN_HEIGHT: 1080
-      TZ: Asia/Jerusalem
-    volumes:
-      - /dev/shm:/dev/shm      
-    ports:
-      - "5901:5900"
-    links:
-      - hub
+  
