@@ -41,4 +41,5 @@ def send_img(file_name):
         abort(404)
 
 
+print("Flask server is running and listening on port 5000")
 app.run(host="0.0.0.0", port=5000, debug=True)
