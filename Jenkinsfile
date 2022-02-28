@@ -6,6 +6,13 @@ pipeline {
         pollSCM 'H/15 * * * *'
     }
 
+    options {
+        timestamps()
+        timeout(time: 600, unit: 'MINUTES')
+        buildDiscarder(logRotator(artifactDaysToKeepStr: '', artifactNumToKeepStr: '', daysToKeepStr: '30', numToKeepStr: ''))
+        disableConcurrentBuilds()
+    }
+
     stages {
 
         stage("Checkout From SCM") {
