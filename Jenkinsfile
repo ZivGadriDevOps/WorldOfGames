@@ -18,14 +18,14 @@ pipeline {
 				stage("Build a docker image") {
             steps {
                 script {
-                    bat 'sudo docker build -t flask-image .'
+                    bat 'docker build -t flask-image .'
                     }
                 }
             }
 				stage("Run docker image") {
             steps {
                 script {
-                    bat 'sudo docker run -d -p 8777:5000 flask-image .'
+                    bat 'docker run -d -p 8777:5000 flask-image .'
                     }
                 }
             }
@@ -39,7 +39,7 @@ pipeline {
 				stage("Terminate and push image") {
             steps {
                 script {
-                    bat 'sudo docker run -d -p 8777:5000 flask-image .'
+                    bat 'docker run -d -p 8777:5000 flask-image .'
                     }
                 }
             }
