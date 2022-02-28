@@ -1,9 +1,5 @@
 pipeline {
 
-    parameters {
-        choice(name: 'User_To_Check', choices: "Ziv\nRotem\nDanielle\nRaz", description: "choose the user you with to check for score")
-    }
-
     agent any
 
     stages {
