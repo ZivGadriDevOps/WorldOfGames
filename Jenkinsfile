@@ -18,14 +18,14 @@ pipeline {
 				stage("Build a docker image") {
             steps {
                 script {
-                    bat 'docker build -t flask-image .'
+                    bat 'docker build -t flask-image:latest .'
                     }
                 }
             }
 				stage("Run docker image") {
             steps {
                 script {
-                    bat 'docker run -d -p 8777:5000 flask-image .'
+                    bat 'docker-compose up'
                     }
                 }
             }
