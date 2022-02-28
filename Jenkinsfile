@@ -39,7 +39,9 @@ pipeline {
 				stage("Terminate and push image") {
             steps {
                 script {
-                    bat 'docker run -d -p 8777:5000 flask-image .'
+                    bat 'docker-compose stop'
+                    bat 'docker tag flask-image zivgadri/flask-image:latest'
+                    bat 'docker push zivgadri/flask-image:latest'
                     }
                 }
             }
