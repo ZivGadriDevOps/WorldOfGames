@@ -2,7 +2,10 @@ from time import sleep
 from random import random, randint
 import sys
 
-from UtilsFile import SCORES_FILE_PATH, BAD_RETURN_CODE
+
+BAD_RETURN_CODE = -1
+SCORES_FILE_PATH = "../Resources/scores.txt"
+
 
 game_map = {
     "1": "Memory Game",
