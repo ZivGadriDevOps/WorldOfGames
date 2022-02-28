@@ -1,7 +1,7 @@
 version: "3.3"
 services: 
   flask:
-    image: zivgadri/flask-image:latest
+    image: flask-image:latest
     container_name: flask-server
     ports:
       - "5000:5000"
