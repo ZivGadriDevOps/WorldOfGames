@@ -1,9 +1,13 @@
 from time import sleep
-
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
-from Utils.UtilsFile import CHROME_DRIVER_FILE_PATH, BAD_RETURN_CODE, GOOD_RETURN_CODE
 from selenium.webdriver.common.by import By
+
+BAD_RETURN_CODE = -1
+GOOD_RETURN_CODE = 0
+IS_USER_EXIST = False
+SCORES_FILE_PATH = "../Resources/scores.txt"
+CHROME_DRIVER_FILE_PATH = "../Utils/chromedriver.exe"
 
 
 def init_driver():
