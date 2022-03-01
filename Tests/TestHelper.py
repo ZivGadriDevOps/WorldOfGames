@@ -50,7 +50,6 @@ def test_scores_service(url):
             return False
     except WebDriverException:
         print("Could not load the page.")
-        exit(-1)
 
 
 def main_function(url):
@@ -60,4 +59,4 @@ def main_function(url):
         else:
             exit(BAD_RETURN_CODE)
     except WebDriverException:
-        exit(-1)
+        print("Could not load the page.")
