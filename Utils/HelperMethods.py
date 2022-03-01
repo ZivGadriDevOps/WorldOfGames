@@ -1,10 +1,10 @@
 from time import sleep
 from random import random, randint
 import sys
+from os import path
 
 
 BAD_RETURN_CODE = -1
-SCORES_FILE_PATH = "../Resources/scores.txt"
 
 
 game_map = {
@@ -237,7 +237,7 @@ def print_faces(expression):
 
 def check_user_exist(user_name):
     try:
-        with open(SCORES_FILE_PATH, 'r') as file_rw:
+        with open(path.abspath(r".\Resources\scores.txt"), 'r') as file_rw:
             data = file_rw.readlines()
             count = 0
             if len(data) > 0:
@@ -276,7 +276,7 @@ def checkToRepeatInstructions():
 
 def get_user_score(user_name):
     try:
-        with open(SCORES_FILE_PATH, 'r') as file_rw:
+        with open(path.abspath(r"..\Resources\scores.txt"), 'r') as file_rw:
             data = file_rw.readlines()
             count = 0
             if len(data) > 0:

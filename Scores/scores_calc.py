@@ -1,4 +1,6 @@
-from Utils.UtilsFile import SCORES_FILE_PATH
+from os import path
+
+SCORES_FILE_PATH = path.abspath(r".\Resources\scores.txt")
 
 
 def add_score_with_user(difficulty, user_name):

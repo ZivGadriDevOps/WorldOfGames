@@ -1,11 +1,9 @@
 from Utils.HelperMethods import print_with_delay, select_a_game, select_difficulty, user_play_again, \
-    get_verified_value_from_user, input_with_delay, check_user_exist, checkToRepeatInstructions
+    get_verified_value_from_user, check_user_exist, checkToRepeatInstructions
 from Games.GuessGame import play as play_guess_game
 from Games.MemoryGame import play as play_memory_game
 from Games.CurrencyRoulette import play as play_currency_roulette_game
 from Scores.scores_calc import add_score_with_user
-from Utils.UtilsFile import IS_USER_EXIST
-from time import sleep
 
 
 def welcome():

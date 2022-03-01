@@ -1,3 +1,4 @@
+from os import path
 from time import sleep
 from selenium import webdriver
 from selenium.common.exceptions import NoSuchElementException, WebDriverException
@@ -6,7 +7,7 @@ from selenium.webdriver.common.by import By
 BAD_RETURN_CODE = -1
 GOOD_RETURN_CODE = 0
 IS_USER_EXIST = False
-CHROME_DRIVER_FILE_PATH = "../Utils/chromedriver.exe"
+CHROME_DRIVER_FILE_PATH = path.abspath(r"../Resources/chromedriver.exe")
 
 
 def init_driver():
