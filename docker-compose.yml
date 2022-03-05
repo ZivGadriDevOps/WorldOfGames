@@ -20,7 +20,7 @@ services:
       GRID_TIMEOUT: 5000
 
   chrome1:
-    image: selenium/node-chrome:98.0
+    image: selenium/node-chrome:3.141.59
     container_name: web-chrome1
     depends_on:
       - hub
