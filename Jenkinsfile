@@ -22,28 +22,40 @@ pipeline {
                     }
                 }
             }
-				stage("Build a docker image") {
+
+		stage("Build a docker image") {
             steps {
                 script {
                     bat 'docker build -t flask-image:latest .'
                     }
                 }
             }
-				stage("Run docker image") {
+
+		stage("Run docker image") {
             steps {
                 script {
                     bat 'docker-compose up -d'
                     }
                 }
             }
-				stage("Test application - e2e") {
+
+        /* stage("Copy file to shared volume") {
+            steps {
+                script {
+                    bat 'cp C:\\Users\\ziv\\.jenkins\\workspace\\flask-pipeline\\Resources\\scores.txt'
+                    }
+                }
+            } */
+
+		stage("Test application - e2e") {
             steps {
                 script {
                     bat 'python Tests/e2e.py'
                     }
                 }
             }
-				stage("Terminate and push image") {
+
+		stage("Terminate and push image") {
             steps {
                 script {
                     bat 'docker-compose stop'

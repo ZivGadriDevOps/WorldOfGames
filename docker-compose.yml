@@ -6,4 +6,36 @@ services:
     ports:
       - "5000:5000"
 
+  hub:
+    image: selenium/hub:3.141.59
+    container_name: hub
+    depends_on:
+      - flask-server
+    ports:
+      - "4444:4444"
 
+    environment:
+      GRID_MAX_SESSION: 16
+      GRID_BROWSER_TIMEOUT: 5000
+      GRID_TIMEOUT: 5000
+
+  chrome1:
+    image: selenium/node-chrome:98.0
+    container_name: web-chrome1
+    depends_on:
+      - hub
+    environment:
+      HUB_PORT_4444_TCP_ADDR: hub
+      HUB_PORT_4444_TCP_PORT: 4444
+      NODE_MAX_SESSION: 1
+      NODE_MAX_INSTANCES: 1
+      SCREEN_WIDTH: 1920
+      SCREEN_HEIGHT: 1080
+      SCORES_FILE_PATH: /dev/shm
+      TZ: Asia/Jerusalem
+    volumes:
+      - C:/Users/ziv/.jenkins/workspace/flask-pipeline/Resources:SCORES_FILE_PATH
+    ports:
+      - "5901:5900"
+    links:
+      - hub
