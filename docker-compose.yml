@@ -14,11 +14,6 @@ services:
     ports:
       - "4444:4444"
 
-    environment:
-      GRID_MAX_SESSION: 16
-      GRID_BROWSER_TIMEOUT: 5000
-      GRID_TIMEOUT: 5000
-
   chrome1:
     image: selenium/node-chrome:3.141.59
     container_name: web-chrome1
@@ -27,8 +22,6 @@ services:
     environment:
       HUB_PORT_4444_TCP_ADDR: hub
       HUB_PORT_4444_TCP_PORT: 4444
-      NODE_MAX_SESSION: 1
-      NODE_MAX_INSTANCES: 1
       SCREEN_WIDTH: 1920
       SCREEN_HEIGHT: 1080
       SCORES_FILE_PATH: /dev/shm
