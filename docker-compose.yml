@@ -1,16 +1,8 @@
 version: "3.3"
-services: 
-  flask:
-    image: flask-image:latest
-    container_name: flask-server
-    ports:
-      - "5000:5000"
-
+services:
   hub:
     image: selenium/hub:3.141.59
     container_name: hub
-    depends_on:
-      - flask
     ports:
       - "4444:4444"
 
@@ -31,3 +23,11 @@ services:
       - "5901:5900"
     links:
       - hub
+
+  flask:
+    image: flask-image:latest
+    container_name: flask-server
+    depends_on:
+      - hub
+    ports:
+      - "5000:5000"
