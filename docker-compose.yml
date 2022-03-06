@@ -24,10 +24,9 @@ services:
       HUB_PORT_4444_TCP_PORT: 4444
       SCREEN_WIDTH: 1920
       SCREEN_HEIGHT: 1080
-      SCORES_FILE_PATH: /dev/shm
       TZ: Asia/Jerusalem
     volumes:
-      - C:/Users/ziv/.jenkins/workspace/flask-pipeline/Resources:SCORES_FILE_PATH
+      - /Resources:/Resources
     ports:
       - "5901:5900"
     links:
