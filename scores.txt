@@ -1,4 +1,5 @@
 DANIELLE : 14
 ZIV : 33
-RAZ : 14
+RAZ : 25
 ROTEM : 53
+SUF : 20
