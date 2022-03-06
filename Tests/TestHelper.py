@@ -49,7 +49,8 @@ def test_scores_service(url):
             print(f"Test failed! Score {score} is not between 1 and 1000")
             return False
     except WebDriverException:
-        print("Could not load the page.")
+        print("Could not load the page. Failure in 'test_scores_service' Method")
+        print(str(WebDriverException.with_traceback()))
 
 
 def main_function(url):
@@ -59,4 +60,6 @@ def main_function(url):
         else:
             exit(BAD_RETURN_CODE)
     except WebDriverException:
-        print("Could not load the page.")
+        print("Could not load the page. Failure in 'main_function' Method")
+        print(str(WebDriverException.with_traceback()))
+        exit(-1)
