@@ -1,4 +1,1 @@
-DANIELLE : 14
-ZIV : 33
-RAZ : 14
-ROTEM : 42
+ZIV : 11

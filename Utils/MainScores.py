@@ -3,6 +3,8 @@ from HelperMethods import get_user_score, get_repaired_name
 
 app = Flask(__name__)
 
+app.config["CACHE_TYPE"] = "null"
+
 app.config["TEMPLATES_PATH/vendor/"] = "C:/Users/ziv/PycharmProjects/WorldOfGames/Utils/templates/vendor/"
 app.config["TEMPLATES_PATH/css/"] = "C:/Users/ziv/PycharmProjects/WorldOfGames/Utils/templates/css/"
 app.config["TEMPLATES_PATH/img/"] = "C:/Users/ziv/PycharmProjects/WorldOfGames/Utils/templates/img/"

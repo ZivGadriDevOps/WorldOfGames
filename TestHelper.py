@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 BAD_RETURN_CODE = -1
 GOOD_RETURN_CODE = 0
 IS_USER_EXIST = False
-CHROME_DRIVER_FILE_PATH = path.abspath(r"../Resources/chromedriver.exe")
+CHROME_DRIVER_FILE_PATH = path.abspath(r"chromedriver.exe")
 
 
 def init_driver():

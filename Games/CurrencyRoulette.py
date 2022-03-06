@@ -1,7 +1,7 @@
 import requests
-from Utils.HelperMethods import get_verified_value_from_user, print_with_delay, print_faces, check_if_user_ready
+from HelperMethods import get_verified_value_from_user, print_with_delay, print_faces, check_if_user_ready
 from time import sleep
-from Utils.HelperMethods import generate_random_int_between
+from HelperMethods import generate_random_int_between
 
 
 def get_current_shekel_rate():

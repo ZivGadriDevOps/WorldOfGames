@@ -237,7 +237,7 @@ def print_faces(expression):
 
 def check_user_exist(user_name):
     try:
-        with open(path.abspath(r".\Resources\scores.txt"), 'r') as file_rw:
+        with open(path.abspath(r"scores.txt"), 'r') as file_rw:
             data = file_rw.readlines()
             count = 0
             if len(data) > 0:
@@ -276,7 +276,7 @@ def checkToRepeatInstructions():
 
 def get_user_score(user_name):
     try:
-        with open(path.abspath(r"..\Resources\scores.txt"), 'r') as file_rw:
+        with open(r"..\scores.txt", 'r') as file_rw:
             data = file_rw.readlines()
             count = 0
             if len(data) > 0:
@@ -292,6 +292,9 @@ def get_user_score(user_name):
                 return BAD_RETURN_CODE
     except FileNotFoundError:
         print(FileNotFoundError.with_traceback())
+
+
+get_user_score("ziv")
 
 
 def get_repaired_name(name):
