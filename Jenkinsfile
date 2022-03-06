@@ -50,7 +50,7 @@ pipeline {
 		stage("Test application - e2e") {
             steps {
                 script {
-                    bat 'python Tests/e2e.py'
+                    bat 'python e2e.py'
                     }
                 }
             }
