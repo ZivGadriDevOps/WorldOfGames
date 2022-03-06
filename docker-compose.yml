@@ -10,7 +10,7 @@ services:
     image: selenium/hub:3.141.59
     container_name: hub
     depends_on:
-      - flask-server
+      - flask
     ports:
       - "4444:4444"
 
